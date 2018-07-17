@@ -1,8 +1,12 @@
 package com.lp.mychart;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -22,13 +26,40 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
- private HorizontalBarChart mHBarChart;
+    private HorizontalBarChart mHBarChart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
         initView();
+    }
+
+    //显示菜单
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //处理菜单击事件
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu1:
+                Toast.makeText(this,"选择了第一项",Toast.LENGTH_SHORT).show();
+               Intent intent=new Intent("com.example.activitytest.ACTION_START");
+
+                startActivity(intent);
+                break;
+            case R.id.menu2:
+                Toast.makeText(this,"选择了第二项",Toast.LENGTH_SHORT).show();
+                finish();
+        }
+
+        return true;
     }
 
     //初始化

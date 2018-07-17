@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">myChart</string>
+
+    <string name="menu1">数据传输情况</string>
+
+    <string name="menu2">厂家数据情况</string>
 </resources>
